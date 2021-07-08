@@ -2,9 +2,21 @@
 
 Rad Records is a React App using Material UI.
 
+# How do I use this project
+
 ## Dependencies
-The following dependencies must be installed to run the client.
-### npm install 
+The following dependencies must be installed to run the client. These are base dependencies for React and the Material UI framework.
+### `npm install bootstrap react react-dom @material-ui/core`
+
+# How do I use Material UI in my component?
+### `import React from 'react';`
+### `import { Button } from '@material-ui/core';`
+
+That's it! Style your components inline just like with Reactstrap.
+
+All available components can be found here: https://material-ui.com/
+
+Just click the hamburger and select components.
 
 # Getting Started with Create React App
 
