@@ -1,3 +1,11 @@
+# RadRecords
+![Rad-Records-Beta-Logo](https://github.com/Marisa588/ArtisanClient/blob/main/Random%20Assets/radrecords_v0.1_small.png)
+Rad Records is a React App using Material UI.
+
+## Dependencies
+The following dependencies must be installed to run the client.
+### npm install 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
