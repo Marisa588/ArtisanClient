@@ -1,5 +1,5 @@
-# RadRecords
 ![Rad-Records-Beta-Logo](https://github.com/Marisa588/ArtisanClient/blob/main/Random%20Assets/radrecords_v0.1_small.png)
+
 Rad Records is a React App using Material UI.
 
 ## Dependencies
