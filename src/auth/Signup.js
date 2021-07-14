@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const Login = (props) => {
+const Signup = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     return(
         <div>
-            <h1>Login</h1>
+            <h1>Sign Up</h1>
             <Form>
                 <FormGroup>
                     <Label htmlFor='username'>Username</Label>
@@ -15,12 +15,12 @@ const Login = (props) => {
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="password">Password</Label>
-                    <Input name="password" value={password} />
+                    <Input name="password" value={password}/>
                 </FormGroup>
-                <Button type='submit'>Login</Button>
+                <Button type='submit'>Sign Up</Button>
             </Form>
         </div>
     )
 }
 
-export default Login
+export default Signup;
