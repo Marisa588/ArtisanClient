@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Register from './Components/Register/RegisterApp'
+import RegisterApp from './Components/Register/RegisterApp';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         >
           Learn React
         </a>
+
+        <RegisterApp />
       </header>
     </div>
   );
