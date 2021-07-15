@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { FormGroup, Form, FormLabel, Input, Button } from '@material-ui/core'
 
-const Signup = (props) => {
+function Login(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     let handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3001/user/register", {
+        fetch("http://localhost:3001/user/login", {
             method: "POST",
             body: JSON.stringify({user:{username: username, password: password}}),
             headers: new Headers({
@@ -20,22 +20,21 @@ const Signup = (props) => {
         })
     }
 
-    return(
+    return (
         <div>
-            <h1>Sign Up</h1>
-            <Form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Label htmlFor='username'>Username</Label>
+                    <FormLabel htmlFor='username'>Username</FormLabel>
                     <Input onChange={(e) => setUsername(e.target.value)} name="username" value={username}/>
                 </FormGroup>
                 <FormGroup>
-                    <Label htmlFor="password">Password</Label>
+                    <FormLabel htmlFor="password">Password</FormLabel>
                     <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
                 </FormGroup>
-                <Button type='submit'>Sign Up</Button>
-            </Form>
+                <Button type='submit'>Login</Button>
+            </form>
         </div>
     )
 }
 
-export default Signup;
+export default Login; 

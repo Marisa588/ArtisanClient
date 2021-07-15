@@ -9,12 +9,16 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+
+// component imports 
 import Login from './Login';
-import mainImage from '../../src/radrecordshomepage.png'
+import Signup from './Signup';
 
+// styling
+import { makeStyles } from '@material-ui/core/styles';
+import mainImage from '../../assets/radrecordshomepage.png'
 
-
+// styling code for landing page
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -47,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Homepage() {
+function Homepage(props) {
   const classes = useStyles();
 
   return (
@@ -55,23 +59,18 @@ function Homepage() {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7}  className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+
         <div className={classes.paper}>
           <Avatar className={classes.avatar}></Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-
-          <Login/>
-          
+          <Typography component="h1" variant="h5">Sign in</Typography>
+          <Login updateToken={props.updateToken}/>
         </div>
 
         <div className={classes.paper}>
           <Avatar className={classes.avatar}></Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
+          <Typography component="h1" variant="h5">Sign up</Typography>
 
-          <Login/>
+          <Signup updateToken={props.updateToken} />
 
         </div>
       </Grid>

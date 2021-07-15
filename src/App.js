@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Homepage from './Components/Homepage';
-import Auth from './auth/Auth'
+import Homepage from './Components/Landing/Homepage';
 
 function App() {
 
@@ -18,11 +17,11 @@ function App() {
     setSessionToken(newToken);
     console.log(sessionToken);
   }
-  // Render method is below
+
+
   return (
     <div>
-      <Homepage />
-      <Auth updateToken={updateToken}/>
+      <Homepage updateToken={updateToken}/>
     </div>
   );
 }
