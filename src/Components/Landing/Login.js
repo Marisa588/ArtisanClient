@@ -29,7 +29,7 @@ function Login(props) {
                 </FormGroup>
                 <FormGroup>
                     <FormLabel htmlFor="password">Password</FormLabel>
-                    <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
+                    <Input type='password' onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
                 </FormGroup>
                 <Button type='submit'>Login</Button>
             </form>

@@ -62,7 +62,7 @@ function Homepage(props) {
 
         <div className={classes.paper}>
           <Avatar className={classes.avatar}></Avatar>
-          <Typography component="h1" variant="h5">Sign in</Typography>
+          <Typography component="h1" variant="h5">Login</Typography>
           <Login updateToken={props.updateToken}/>
         </div>
 
