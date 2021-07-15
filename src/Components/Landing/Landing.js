@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Homepage(props) {
+function Landing(props) {
   const classes = useStyles();
 
   return (
@@ -78,4 +78,4 @@ function Homepage(props) {
   );
 }
 
-export default Homepage;
+export default Landing;

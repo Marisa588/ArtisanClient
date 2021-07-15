@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import Homepage from './Components/Landing/Homepage';
+import Landing from './Components/Landing/Landing';
+import Homepage from './Components/Homepage/Homepage';
 
 function App() {
 
@@ -18,10 +19,20 @@ function App() {
     console.log(sessionToken);
   }
 
+  const clearToken = () => {
+    localStorage.clear();
+    setSessionToken('');
+  }
+
+  const protectedViews = () => {
+    return (sessionToken === localStorage.getItem('token') ? <Homepage token={sessionToken} logout={clearToken}/>
+    : <Landing updateToken={updateToken}/>)
+  }
+
 
   return (
     <div>
-      <Homepage updateToken={updateToken}/>
+      {protectedViews()}
     </div>
   );
 }
