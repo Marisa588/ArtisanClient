@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import Landing from './Components/Landing/Landing';
 import Homepage from './Components/Homepage/Homepage';
+import Records from './Components/Records/RecordIndex'
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
   }
 
   const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? <Homepage token={sessionToken} logout={clearToken}/>
+    return (sessionToken === localStorage.getItem('token') ? [<Homepage token={sessionToken} logout={clearToken}/>, <Homepage token={sessionToken} logout={clearToken}/>] 
     : <Landing updateToken={updateToken}/>)
   }
 

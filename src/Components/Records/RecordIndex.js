@@ -13,12 +13,12 @@ const RecordIndex = (props) => {
             })
         }).then((res) => res.json())
             .then((logData) => {
-                setWorkouts(logData);
+                setRecords(logData);
             })
     };
 
     useEffect(() => {
-        fetchWorkouts();
+        fetchRecords();
     }, []);
 
     return(
