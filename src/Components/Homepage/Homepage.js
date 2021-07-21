@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header'
 import Footer from './Footer'
+import SubmissionForm from './SubmissionForm'
 
 import { makeStyles, Container } from '@material-ui/core';
 
@@ -19,6 +20,7 @@ function Homepage(props) {
         <Container className={classes.root}>
             <Header logout={props.logout}/>
             <div> 
+                <SubmissionForm />
                 Marisa's component will go here
                 <br/>
                 content
