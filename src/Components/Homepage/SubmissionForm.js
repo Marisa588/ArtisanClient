@@ -14,7 +14,7 @@ const SubmissionForm = (props) => {
 
         fetch('http://localhost:3001/products/', {
             method: 'POST',
-            body: JSON.stringify({ log: { artist: artist, album: album, description: description, price: price, condition: condition } }),
+            body: JSON.stringify({ product: { artist: artist, album: album, description: description, price: price, condition: condition } }),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${props.token}`
