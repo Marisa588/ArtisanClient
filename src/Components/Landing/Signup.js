@@ -4,7 +4,15 @@ import { FormGroup, Form, FormLabel, Input, Button } from '@material-ui/core'
 const Signup = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    
+    // Validation
+    const [cPassword, setCPassword] = useState('');
 
+    const [emailValid, setEmailValid] = useState(false);
+    const [passwordValid, setPasswordValid] = useState(false)
+    const [cPasswordValid, setCPasswordValid] = useState(false);
+
+    
     let handleSubmit = (event) => {
         event.preventDefault();
         fetch("http://localhost:3001/user/register", {
