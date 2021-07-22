@@ -38,7 +38,7 @@ const SubmissionForm = (props) => {
             <form onSubmit={handleSubmit}>
                 <FormGroup>
                     <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>
-                    <Input name="image"  value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+                    <Input name="image"  type="file" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
                     <FormLabel htmlFor="artist">Artist</FormLabel>
                     <Input name="Artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
                     <FormLabel htmlFor="album">Album</FormLabel>
