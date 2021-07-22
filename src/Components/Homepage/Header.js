@@ -1,45 +1,72 @@
 import React from 'react';
-import { Button, Toolbar, PropTypes, IconButton, Typography, Link, ButtonBase } from '@material-ui/core';
+import { Button, Toolbar, IconButton, MenuItem, Menu, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import { SearchIcon } from '@material-ui/icons';
+
+import logo from '../../assets/Logo.JPG'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
-        borderBottom: `1px solid ${theme.palette.divider}`,
+        background: '#ED6A40',
+        padding: 0,
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        height: '100px'
     },
     toolbarTitle: {
         flex: 1,
+    },
+    img: {
+        maxWidth: '45%'
+    },
+    btn: {
+        padding: '0 5% 0'
     }
+
 }));
 
 function Header(props) {
 
     const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
 
     return (
-        <React.Fragment>
-            <Toolbar className={classes.toolbar}>
-                <Button size="small">Add Record</Button>
-                <Typography
-                    component="h2"
-                    variant="h5"
-                    color="inherit"
-                    align="center"
-                    noWrap
-                    className={classes.toolbarTitle}
-                >
-                    Rad Records
-                </Typography>
-                <IconButton>
-                    {/* <SearchIcon /> */}
-                </IconButton>
-                <Button onClick={props.logout} variant="outlined" size="small">
-                    LOGOUT
-                </Button>
-            </Toolbar>
+        <Toolbar className={classes.toolbar}>
+            <Button className={classes.btn} aria-controls="simple-menu">SELL</Button>
+            <img className={classes.img} alt='brightly colored logo with text rad records' src={logo}></img>
+            <IconButton
+                aria-label="account of current user"
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+                color="inherit"
+                className={classes.btn}
+            >
+                <Avatar className={classes.small}></Avatar>
+            </IconButton>
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                <MenuItem onClick={handleClose}>My Listings</MenuItem>
+                <MenuItem onClick={handleClose}>My Likes</MenuItem>
+                <MenuItem onClick={props.logout}>Logout</MenuItem>
+            </Menu>
+        </Toolbar>
 
-        </React.Fragment>
     );
 
 
