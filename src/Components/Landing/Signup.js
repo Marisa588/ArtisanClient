@@ -90,14 +90,23 @@ const Signup = (props) => {
         <FormGroup>
           <Label htmlFor="password">Password</Label>
           <Input
+          
             onChange={(e) => {
+                var re = /^[\w ]+$/;
+
               setPassword(e.target.value);
+              if(!re.test(e.target.value)) {
+                console.log('test')
+                console.log('there is a illegal character')
+            }
+
               if (e.target.value.includes("@")) {
                 setPasswordValid(true);
               } else {
                 setPasswordValid(false);
               }
             }}
+        
             name="password"
             value={password}
           />
