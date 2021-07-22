@@ -9,6 +9,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
+      padding: 0,
+      maxWidth: '100vw'
     }
   }));
 

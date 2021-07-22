@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { FormGroup, Form, FormLabel, Input, Button } from '@material-ui/core'
+import { FormGroup, FormLabel, Input, Button } from '@material-ui/core'
 
 const Signup = (props) => {
     const [username, setUsername] = useState('');
