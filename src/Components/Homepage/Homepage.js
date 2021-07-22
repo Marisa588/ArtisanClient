@@ -1,6 +1,11 @@
 import React from 'react';
 import Header from './Header'
 import Footer from './Footer'
+import SubmissionForm from './SubmissionForm'
+import AllProducts from './GetContent'
+import UserProducts from './UserProducts'
+
+
 
 import { makeStyles, Container } from '@material-ui/core';
 
@@ -21,9 +26,10 @@ function Homepage(props) {
         <Container className={classes.root}>
             <Header logout={props.logout}/>
             <div> 
-                Marisa's component will go here
+                <SubmissionForm />
+                {/* <UserProducts /> */}
                 <br/>
-                content
+                <AllProducts />
                 <br/>
                 content
                 <br/>
