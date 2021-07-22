@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { FormGroup, Form, FormLabel, Input, Button } from '@material-ui/core'
+import { FormGroup, FormLabel, Input, Button } from '@material-ui/core'
 
 function Login(props) {
     const [username, setUsername] = useState('');
@@ -31,7 +31,7 @@ function Login(props) {
                     <FormLabel htmlFor="password">Password</FormLabel>
                     <Input type='password' onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
                 </FormGroup>
-                <Button type='submit'>Login</Button>
+                <Button variant='outlined' type='submit'>Login</Button>
             </form>
         </div>
     )

@@ -2,6 +2,10 @@ import React from 'react';
 import Header from './Header'
 import Footer from './Footer'
 import SubmissionForm from './SubmissionForm'
+import AllProducts from './GetContent'
+import UserProducts from './UserProducts'
+
+
 
 import { makeStyles, Container } from '@material-ui/core';
 
@@ -10,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column',
       minHeight: '100vh',
+      padding: 0,
+      maxWidth: '100vw'
     }
   }));
 
@@ -21,9 +27,9 @@ function Homepage(props) {
             <Header logout={props.logout}/>
             <div> 
                 <SubmissionForm />
-                Marisa's component will go here
+                {/* <UserProducts /> */}
                 <br/>
-                content
+                <AllProducts />
                 <br/>
                 content
                 <br/>
