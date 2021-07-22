@@ -6,7 +6,7 @@ import logo from '../../assets/Logo.JPG'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
-        background: 'orange',
+        background: '#ED6A40',
         padding: 0,
         width: '100%',
         display: 'flex',
