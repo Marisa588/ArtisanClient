@@ -7,6 +7,7 @@ const SubmissionForm = (props) => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [condition, setCondition] =useState('')
+    // const [imageUrl, setImageUrl] =useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,6 +28,7 @@ const SubmissionForm = (props) => {
                 setDescription('')
                 setPrice('')
                 setCondition('')
+                // setImageUrl('')
                 props.getProducts()
             })
     }
@@ -35,6 +37,8 @@ const SubmissionForm = (props) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
+                    {/* <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>
+                    <Input name="image" type="file" value={imageUrl} onChange={(e) => setCondition(e.target.value)} /> */}
                     <FormLabel htmlFor="artist">Artist</FormLabel>
                     <Input name="Artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
                     <FormLabel htmlFor="album">Album</FormLabel>
@@ -45,7 +49,11 @@ const SubmissionForm = (props) => {
                     <Input name="Price" value={price} onChange={(e) => setPrice(e.target.value)} />
                     <FormLabel htmlFor="condition">Condition</FormLabel>
                     <Input name="Condition" value={condition} onChange={(e) => setCondition(e.target.value)} />
+
+                    {/* <FormLabel htmlFor="imageUrl">Product Image</FormLabel>
+                    <Input name="image" type="file" /> */}
                 </FormGroup>
+                
                 <Button type='submit'>Submit</Button>
             </form>
         </div>
