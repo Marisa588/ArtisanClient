@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { FormGroup, Form, FormLabel, Input, Button } from "@material-ui/core";
+import { FormGroup, Form, Label, Input, Button, FormFeedback } from "reactstrap";
 
 const Signup = (props) => {
+    const [signup, setSignup] = useState(true);
+
+
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,6 +15,8 @@ const Signup = (props) => {
   const [userValid, setUserValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
   const [cPasswordValid, setCPasswordValid] = useState(false);
+
+  const [theme, setTheme] = useState("Dark");
 
   // Begin Css
   const formWrapper = {
@@ -59,41 +65,38 @@ const Signup = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <FormGroup>
-          <FormLabel htmlFor="username">Username</FormLabel>
+          <Label htmlFor="username">Username</Label>
           <Input
             required
-            type='username'
-            id='username'
+            type="username"
+            id="username"
             onChange={(e) => {
-                setUsername(e.target.value)
-                if (
-                    e.target.value.includes("@")
-                ) {
-                    setUserNameValid(true);
-                } else {
-                    setUserNameValid(false);
-                }
-
-
+              setUsername(e.target.value);
+              if (e.target.value.includes("@")) {
+                setUserValid(true);
+              } else {
+                setUserValid(false);
+              }
             }}
             name="username"
             value={username}
           />
+
+          <FormFeedback style={formFeedBackStyle} invalid>
+            {signup && "Email must be valid"}
+          </FormFeedback>
         </FormGroup>
+
         <FormGroup>
-          <FormLabel htmlFor="password">Password</FormLabel>
+          <Label htmlFor="password">Password</Label>
           <Input
             onChange={(e) => {
-                setPassword(e.target.value)
-                if (
-                    e.target.value.includes("@")
-                ) {
-                    setPasswordValid(true);
-                } else {
-                    setPasswordValid(false);
-                }
-            
-            
+              setPassword(e.target.value);
+              if (e.target.value.includes("@")) {
+                setPasswordValid(true);
+              } else {
+                setPasswordValid(false);
+              }
             }}
             name="password"
             value={password}
