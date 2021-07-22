@@ -7,7 +7,7 @@ const SubmissionForm = (props) => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [condition, setCondition] =useState('')
-    // const [imageUrl, setImageUrl] =useState('')
+    const [imageUrl, setImageUrl] =useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -15,7 +15,7 @@ const SubmissionForm = (props) => {
 
         fetch('http://localhost:3001/products/', {
             method: 'POST',
-            body: JSON.stringify({ product: { artist: artist, album: album, description: description, price: price, condition: condition } }),
+            body: JSON.stringify({ product: { artist: artist, album: album, description: description, price: price, condition: condition, imageUrl: imageUrl } }),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${props.token}`
@@ -28,8 +28,8 @@ const SubmissionForm = (props) => {
                 setDescription('')
                 setPrice('')
                 setCondition('')
-                // setImageUrl('')
-                props.getProducts()
+                setImageUrl('')
+                // props.getProducts()
             })
     }
 
@@ -37,8 +37,8 @@ const SubmissionForm = (props) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
-                    {/* <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>
-                    <Input name="image" type="file" value={imageUrl} onChange={(e) => setCondition(e.target.value)} /> */}
+                    <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>
+                    <Input name="image"  value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
                     <FormLabel htmlFor="artist">Artist</FormLabel>
                     <Input name="Artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
                     <FormLabel htmlFor="album">Album</FormLabel>
@@ -50,8 +50,8 @@ const SubmissionForm = (props) => {
                     <FormLabel htmlFor="condition">Condition</FormLabel>
                     <Input name="Condition" value={condition} onChange={(e) => setCondition(e.target.value)} />
 
-                    {/* <FormLabel htmlFor="imageUrl">Product Image</FormLabel>
-                    <Input name="image" type="file" /> */}
+                    <FormLabel htmlFor="imageUrl">Product Image</FormLabel>
+                    <Input name="image" type="file" />
                 </FormGroup>
                 
                 <Button type='submit'>Submit</Button>
