@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button, Toolbar, IconButton, MenuItem, Menu, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import ModalTest from './ModalTest'
 
-import logo from '../../assets/Logo.JPG'
+import logo from '../../assets/radnew.png'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -42,7 +43,9 @@ function Header(props) {
 
     return (
         <Toolbar className={classes.toolbar}>
-            <Button className={classes.btn} aria-controls="simple-menu">SELL</Button>
+            
+            {/* <Button className={classes.btn} aria-controls="simple-menu">SELL</Button> */}
+            <ModalTest token={props.token}/>
             <img className={classes.img} alt='brightly colored logo with text rad records' src={logo}></img>
             <IconButton
                 aria-label="account of current user"
