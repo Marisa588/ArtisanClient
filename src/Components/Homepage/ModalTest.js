@@ -28,9 +28,10 @@ function rand() {
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
-    img: {
+    btn: {
       background: 'transparent',
-      color: 'transparent'
+      color: 'transparent',
+      marginLeft: '50px'
     }
   }));
   
@@ -57,8 +58,8 @@ function rand() {
   
     return (
       <div>
-        <button type="button" onClick={handleOpen}>
-          <img className={classes.img} src={userIcon}></img>
+        <button className={classes.btn} type="button" onClick={handleOpen}>
+          <img src={userIcon}></img>
         </button>
         <Modal
           open={open}
