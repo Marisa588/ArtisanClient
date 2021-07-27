@@ -13,17 +13,18 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         height: '100px'
     },
     toolbarTitle: {
         flex: 1,
     },
     img: {
-        maxWidth: '45%'
+        maxWidth: '45%',
+        position: 'center'
     },
     btn: {
-        padding: '0 5% 0'
+       
     }
 
 }));
@@ -56,7 +57,7 @@ function Header(props) {
                 color="inherit"
                 className={classes.btn}
             >
-                <Avatar alt="user icon that looks like a record player" src={userIcon} className={classes.small}></Avatar>
+                <Avatar alt="user icon that looks like a record player" src={userIcon} className={classes.large}></Avatar>
             </IconButton>
             <Menu
                 id="simple-menu"
@@ -65,8 +66,7 @@ function Header(props) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>My Listings</MenuItem>
-                <MenuItem onClick={handleClose}>My Likes</MenuItem>
+                <MenuItem onClick={handleClose}>My Account</MenuItem>
                 <MenuItem onClick={props.logout}>Logout</MenuItem>
             </Menu>
         </Toolbar>

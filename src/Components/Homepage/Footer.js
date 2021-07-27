@@ -18,7 +18,7 @@ function Footer() {
         <footer className={classes.footer}>
         <Container maxWidth="lg">
           <Typography variant="subtitle1" align="center" color="textSecondary" component="p" gutterBottom>
-            Filler text here if we want it
+            Stay Rad, Buy Vinyl
           </Typography>
           <Typography variant="body2" color="textSecondary" align="center">
               Rad Records 2021

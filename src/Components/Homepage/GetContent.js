@@ -16,11 +16,13 @@ import Modal from '@material-ui/core/Modal';
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      width: 1080,
+      maxWidth: '100vw',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       overflow: 'hidden',
       backgroundColor: theme.palette.background.paper,
+      // backgroundColor: '#E5D2B4'
+
     },
     imageList: {
       width: 1200,
@@ -29,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
     },
+    align: {
+      textAlign: 'center',
+      color: '#8C6373'
+    }
   }));
   
 function AllProduct() {
@@ -60,7 +66,7 @@ function AllProduct() {
     <div className={classes.root}>
     <ImageList rowHeight={400} className={classes.imageList}>
       <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
-        <ListSubheader component="div">For Sale</ListSubheader>
+        <ListSubheader className={classes.align} component="div">For Sale</ListSubheader>
       </ImageListItem>
         {itemData.map((item) => (
         <ImageListItem key={item.imageUrl}>

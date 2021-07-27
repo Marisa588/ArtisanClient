@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       minHeight: '100vh',
       padding: 0,
-      maxWidth: '100vw'
+      maxWidth: '100vw',
     }
   }));
 
@@ -25,11 +25,8 @@ function Homepage(props) {
     return (
         <Container className={classes.root}>
             <Header logout={props.logout} token={props.token}/>
-            <div> 
                 <MyProducts token={props.token}/>
-                <br/>
                 <AllProducts />
-            </div>
             <Footer/>
         </Container>
     )
