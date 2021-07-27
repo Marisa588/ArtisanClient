@@ -8,12 +8,13 @@ const SubmissionForm = (props) => {
     const [price, setPrice] = useState('')
     const [condition, setCondition] =useState('')
     const [imageUrl, setImageUrl] =useState('')
+    const [image, setImage] =useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
         // Multer stuff goes here
 
-        fetch('http://localhost:3001/products/', {
+        fetch('http://localhost:3001/albumcover/', {
             method: 'POST',
             body: JSON.stringify({ product: { artist: artist, album: album, description: description, price: price, condition: condition, imageUrl: imageUrl } }),
             headers: new Headers({
@@ -37,8 +38,8 @@ const SubmissionForm = (props) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>
-                    <Input name="image"  type="file" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+                    <FormLabel htmlFor="image">image</FormLabel>
+                    <Input name="image"  type="file" value={image} onChange={(e) => setImage(e.target.value)} />
                     <FormLabel htmlFor="artist">Artist</FormLabel>
                     <Input name="Artist" value={artist} onChange={(e) => setArtist(e.target.value)} />
                     <FormLabel htmlFor="album">Album</FormLabel>

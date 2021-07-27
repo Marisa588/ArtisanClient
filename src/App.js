@@ -4,6 +4,12 @@ import Landing from './Components/Landing/Landing';
 import Homepage from './Components/Homepage/Homepage';
 
 import SubmissionFrom from './Components/Homepage/SubmissionForm'
+
+import FilesUploadComponent from './Components/Homepage/files-upload-component'
+
+import ReactUploadImage from './Components/Homepage/ReactUploadImage'
+import FileUpload from './Components/Homepage/FileUpload'
+
 function App() {
 
   const [sessionToken, setSessionToken] = useState('');
@@ -26,7 +32,7 @@ function App() {
   }
 
   const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? [<Homepage token={sessionToken} logout={clearToken}/>, <SubmissionFrom token={sessionToken}/>]
+    return (sessionToken === localStorage.getItem('token') ? [<Homepage token={sessionToken} logout={clearToken}/>, <SubmissionFrom token={sessionToken}/>, <FilesUploadComponent token={sessionToken}/>, <ReactUploadImage token={sessionToken}/>, <FileUpload token={sessionToken}/>]
     : <Landing updateToken={updateToken}/>)
   }
 
