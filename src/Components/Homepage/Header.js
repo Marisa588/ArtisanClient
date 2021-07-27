@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ModalTest from './ModalTest'
 
 import logo from '../../assets/radnew.png'
+import userIcon from '../../assets/usericon.png'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -55,7 +56,7 @@ function Header(props) {
                 color="inherit"
                 className={classes.btn}
             >
-                <Avatar className={classes.small}></Avatar>
+                <Avatar alt="user icon that looks like a record player" src={userIcon} className={classes.small}></Avatar>
             </IconButton>
             <Menu
                 id="simple-menu"

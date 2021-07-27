@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles, Modal } from '@material-ui/core'
 import SubmissionForm from './SubmissionForm';
 
+import userIcon from '../../assets/listyourrecord-small.png'
+
 function rand() {
     return Math.round(Math.random() * 20) - 10;
   }
@@ -26,6 +28,10 @@ function rand() {
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
+    img: {
+      background: 'transparent',
+      color: 'transparent'
+    }
   }));
   
   export default function SimpleModal(props) {
@@ -52,7 +58,7 @@ function rand() {
     return (
       <div>
         <button type="button" onClick={handleOpen}>
-          SELL
+          <img className={classes.img} src={userIcon}></img>
         </button>
         <Modal
           open={open}

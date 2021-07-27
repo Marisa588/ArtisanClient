@@ -26,8 +26,6 @@ function Homepage(props) {
         <Container className={classes.root}>
             <Header logout={props.logout} token={props.token}/>
             <div> 
-                <SubmissionForm token={props.token}/>
-                <br/>
                 {/* <UserProducts /> */}
                 <br/>
                 <AllProducts />
