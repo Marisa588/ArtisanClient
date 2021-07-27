@@ -11,6 +11,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import Modal from '@material-ui/core/Modal';
+import ListItemText from '@material-ui/core/ListItemText';
  
 
 const useStyles = makeStyles((theme) => ({
@@ -24,8 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     imageList: {
-      width: 1200,
-      height: 3000,
+      flexWrap: 'no-wrap'
     },
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
@@ -65,7 +65,7 @@ function AllProduct() {
     <div className={classes.root}>
     <ImageList rowHeight={400} className={classes.imageList}>
       <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
-        <ListSubheader className={classes.align} component="div">For Sale</ListSubheader>
+        <ListItemText className={classes.align} component="div">For Sale</ListItemText>
       </ImageListItem>
         {itemData.map((item) => (
         <ImageListItem key={item.imageUrl}>
