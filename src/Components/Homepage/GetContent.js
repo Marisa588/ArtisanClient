@@ -10,19 +10,21 @@ import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
+import Modal from '@material-ui/core/Modal';
+ 
 
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      width: 1230,
+      width: 1080,
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       overflow: 'hidden',
       backgroundColor: theme.palette.background.paper,
     },
     imageList: {
-      width: 1230,
-      height: 1300,
+      width: 1200,
+      height: 3000,
     },
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
@@ -32,6 +34,15 @@ const useStyles = makeStyles((theme) => ({
 function AllProduct() {
     const classes = useStyles();
     const [itemData, setItemData] = useState([])
+    const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
       const fetchItems = async () => {
@@ -47,19 +58,28 @@ function AllProduct() {
 
   return (
     <div className={classes.root}>
-    <ImageList rowHeight={180} className={classes.imageList}>
+    <ImageList rowHeight={400} className={classes.imageList}>
       <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
         <ListSubheader component="div">For Sale</ListSubheader>
       </ImageListItem>
         {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img src={item.img} alt={item.album} />
+        <ImageListItem key={item.imageUrl}>
+          <img src={item.imageUrl} alt={item.album} />
           <ImageListItemBar
             album={item.album}
             subtitle={<span>By: {item.artist} <br/><br/> Price: ${item.price} </span>}
             actionIcon={
               <IconButton aria-label={`info about ${item.album}`} className={classes.icon}>
-                <InfoIcon />
+                <InfoIcon>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                  >
+                    {item.description}
+                  </Modal>
+                </InfoIcon>
                 <FavoriteIcon />
                 <ShareIcon />
               </IconButton>
