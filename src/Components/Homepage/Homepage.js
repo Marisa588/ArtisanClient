@@ -3,7 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import SubmissionForm from './SubmissionForm'
 import AllProducts from './GetContent'
-import UserProducts from './UserProducts'
+import MyProducts from './UserProducts'
 
 
 
@@ -26,7 +26,7 @@ function Homepage(props) {
         <Container className={classes.root}>
             <Header logout={props.logout} token={props.token}/>
             <div> 
-                {/* <UserProducts /> */}
+                <MyProducts token={props.token}/>
                 <br/>
                 <AllProducts />
             </div>
