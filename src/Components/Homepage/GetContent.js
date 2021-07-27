@@ -16,7 +16,6 @@ import Modal from '@material-ui/core/Modal';
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      maxWidth: '100vw',
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       overflow: 'hidden',
