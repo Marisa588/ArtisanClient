@@ -27,7 +27,7 @@ function App() {
   }
 
   const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? [<Homepage token={sessionToken} logout={clearToken}/>, <SubmissionFrom token={sessionToken}/>]
+    return (sessionToken === localStorage.getItem('token') ? <Homepage token={sessionToken} logout={clearToken}/>
     : <Landing updateToken={updateToken}/>)
   }
 

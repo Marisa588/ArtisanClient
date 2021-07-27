@@ -1,5 +1,21 @@
 import React, {useState} from 'react';
-import { FormGroup, FormLabel, Input, Button } from '@material-ui/core'
+import { FormGroup, FormLabel, Input, Button, makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles((theme) => ({
+    form: {
+      color: 'white',
+      padding: '1%',
+      textAlign: 'center'
+    },
+    btn: {
+        color: 'white',
+        position: 'relative',
+        top: '50%;',
+        transform: 'translateY(-50%)',
+        transform: 'translateX(60%)'
+    }
+  
+  }));
 
 const Signup = (props) => {
     const [username, setUsername] = useState('');
@@ -20,18 +36,20 @@ const Signup = (props) => {
         })
     }
 
+    const classes = useStyles();
+
     return(
         <div>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <FormLabel htmlFor='username'>Username</FormLabel>
-                    <Input onChange={(e) => setUsername(e.target.value)} name="username" value={username}/>
+                    <FormLabel className={classes.form} htmlFor='username'>Username</FormLabel>
+                    <Input className={classes.form} onChange={(e) => setUsername(e.target.value)} name="username" value={username}/>
                 </FormGroup>
                 <FormGroup>
-                    <FormLabel htmlFor="password">Password</FormLabel>
-                    <Input onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
+                    <FormLabel className={classes.form} htmlFor="password">Password</FormLabel>
+                    <Input className={classes.form} onChange={(e) => setPassword(e.target.value)} name="password" value={password}/>
                 </FormGroup>
-                <Button type='submit'>Sign Up</Button>
+                <Button className={classes.btn} type='submit'>Sign Up</Button>
             </form>
         </div>
     )

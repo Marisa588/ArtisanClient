@@ -24,15 +24,11 @@ function Homepage(props) {
 
     return (
         <Container className={classes.root}>
-            <Header logout={props.logout}/>
+            <Header logout={props.logout} token={props.token}/>
             <div> 
-                <SubmissionForm />
                 <MyProducts token={props.token}/>
                 <br/>
                 <AllProducts />
-                <br/>
-                content
-                <br/>
             </div>
             <Footer/>
         </Container>
