@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Toolbar, IconButton, MenuItem, Menu, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import ModalTest from './ModalTest'
 
-import logo from '../../assets/Logo.JPG'
+import logo from '../../assets/radnew.png'
+import userIcon from '../../assets/usericon.png'
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -11,17 +13,18 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         height: '100px'
     },
     toolbarTitle: {
         flex: 1,
     },
     img: {
-        maxWidth: '45%'
+        maxWidth: '45%',
+        position: 'center'
     },
     btn: {
-        padding: '0 5% 0'
+       
     }
 
 }));
@@ -42,7 +45,9 @@ function Header(props) {
 
     return (
         <Toolbar className={classes.toolbar}>
-            <Button className={classes.btn} aria-controls="simple-menu">SELL</Button>
+            
+            {/* <Button className={classes.btn} aria-controls="simple-menu">SELL</Button> */}
+            <ModalTest token={props.token}/>
             <img className={classes.img} alt='brightly colored logo with text rad records' src={logo}></img>
             <IconButton
                 aria-label="account of current user"
@@ -52,7 +57,7 @@ function Header(props) {
                 color="inherit"
                 className={classes.btn}
             >
-                <Avatar className={classes.small}></Avatar>
+                <Avatar alt="user icon that looks like a record player" src={userIcon} className={classes.large}></Avatar>
             </IconButton>
             <Menu
                 id="simple-menu"
@@ -61,8 +66,7 @@ function Header(props) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>My Listings</MenuItem>
-                <MenuItem onClick={handleClose}>My Likes</MenuItem>
+                <MenuItem onClick={handleClose}>My Account</MenuItem>
                 <MenuItem onClick={props.logout}>Logout</MenuItem>
             </Menu>
         </Toolbar>

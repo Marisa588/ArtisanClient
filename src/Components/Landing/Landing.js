@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     backgroundColor: '#522641', 
     color: 'white',
+    paddingTop: '10%'
   },
   avatar: {
     margin: theme.spacing(1),
@@ -48,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
   },
   bg: {
     backgroundColor: '#522641'
+  }, 
+  header: {
+    paddingBottom: '5%'
   }
 }));
 
@@ -63,14 +67,13 @@ function Landing(props) {
 
         <div className={classes.paper}>
           <Avatar alt="vinyl icon" src={vinylIcon} className={classes.small}></Avatar>
-          <Typography component="h1" variant="h5">Login</Typography>
+          <Typography className={classes.header} component="h1" variant="h5">Login</Typography>
           <Login updateToken={props.updateToken} />
         </div>
 
         <div className={classes.paper}>
           <Avatar alt="vinyl icon" src={vinylIcon} className={classes.small}></Avatar>
-          <Typography component="h1" variant="h5">Sign up</Typography>
-
+          <Typography className={classes.header} component="h1" variant="h5">Sign up</Typography>
           <Signup updateToken={props.updateToken} />
 
         </div>

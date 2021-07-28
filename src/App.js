@@ -3,6 +3,7 @@ import './App.css';
 import Landing from './Components/Landing/Landing';
 import Homepage from './Components/Homepage/Homepage';
 
+
 import SubmissionFrom from './Components/Homepage/SubmissionForm'
 function App() {
 
@@ -26,7 +27,7 @@ function App() {
   }
 
   const protectedViews = () => {
-    return (sessionToken === localStorage.getItem('token') ? [<Homepage token={sessionToken} logout={clearToken}/>, <SubmissionFrom token={sessionToken}/>]
+    return (sessionToken === localStorage.getItem('token') ? <Homepage token={sessionToken} logout={clearToken}/>
     : <Landing updateToken={updateToken}/>)
   }
 

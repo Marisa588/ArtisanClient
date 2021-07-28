@@ -3,7 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import SubmissionForm from './SubmissionForm'
 import AllProducts from './GetContent'
-import UserProducts from './UserProducts'
+import MyProducts from './UserProducts'
 
 
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       minHeight: '100vh',
       padding: 0,
-      maxWidth: '100vw'
+      maxWidth: '100vw',
     }
   }));
 
@@ -24,16 +24,9 @@ function Homepage(props) {
 
     return (
         <Container className={classes.root}>
-            <Header logout={props.logout}/>
-            <div> 
-                <SubmissionForm />
-                {/* <UserProducts /> */}
-                <br/>
+            <Header logout={props.logout} token={props.token}/>
+                <MyProducts token={props.token}/>
                 <AllProducts />
-                <br/>
-                content
-                <br/>
-            </div>
             <Footer/>
         </Container>
     )
