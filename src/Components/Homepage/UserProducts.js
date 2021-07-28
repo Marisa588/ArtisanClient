@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgba(255, 255, 255, 0.54)',
   },
   override: {
-    classes: 'none'
+    IconButton: "space around"
   }
 }));
 
@@ -77,14 +77,23 @@ const DeletePost = (props) => {
           "Authorization": `Bearer ${props.token}`
         })
       })
-      .then(() => props.fetchPost())
+      .then(response => response.json())
+      .catch(err => {
+        console.error(err)
+      })
+      .then((json) => {
+        setDeleteData(json);
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      console.log(deleteData)
     }
-// const deleteButton =<button> onClick={() => {DeletePost(post)}}</button>
-// const [postToUpdate, setPostToUpdate] = useState({});
-// const editUpdateWorkout = (workout) => {
-//   setWorkoutToUpdate(workout);
-//   console.log(workout);
-// }
+    // handleDelete = postId => {
+    //   const myProducts= this.deleteData.myProducts.filter(postId => post.Id !== postId)
+    //   this.setDeleteData({posts: posts})
+    // };
+
 const classes = useStyles();
 
 
@@ -102,37 +111,21 @@ const classes = useStyles();
                 title: classes.delete,
               }}
               actionIcon={
-                
-                <IconButton >
+                <div>                
                   <DeleteIcon />
-                </IconButton>
-                
+                  <EditIcon />
+                </div>           
                 
               }
 
-              actionIcon={
-                <IconButton >
-                  <DeleteIcon />
-                </IconButton>
-              }
-              // title={post.album}
-              // classes={{
-              //   root: classes.titleBar,
-              //   title: classes.edit,
-              // }}
-              // actionIcon={
-              //   <IconButton aria-label ="edit" handleSubmit>
-              //     <EditIcon  />       
-              //   </IconButton>              
-              // }
             />
           </ImageListItem>
         ))}
       </ImageList>
     </div> 
     )
-}
 
+}
 
 
 export default MyProducts
