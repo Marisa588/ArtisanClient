@@ -29,7 +29,7 @@ const SubmissionForm = (props) => {
                 setPrice('')
                 setCondition('')
                 // setImageUrl('')
-                props.getProducts()
+                // props.getProducts()
             })
     }
 
