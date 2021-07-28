@@ -13,6 +13,8 @@ import EditIcon from '@material-ui/icons/Edit';
 
 
 
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -35,11 +37,8 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
-  override: {
-    IconButton: "space around"
-  }
+  
 }));
-
 
 
 
@@ -47,8 +46,8 @@ const useStyles = makeStyles((theme) => ({
 
   
 function MyProducts (props) {
- 
-  const [postData, setPostData] = useState([])
+ const [postId, setPostId] = useState([])
+ const [postData, setPostData] = useState([])
     useEffect(() => {  
     fetch(`http://localhost:3001/products/mine`, {
       method: "GET",
@@ -58,8 +57,8 @@ function MyProducts (props) {
       })
     })
     .then(response => response.json())
-    .then((json) => {
-      setPostData(json);
+    .then((data) => {
+      setPostData(data);
     })
     .catch(err => {
       console.error(err)
@@ -67,32 +66,28 @@ function MyProducts (props) {
     }, []);
 console.log(postData)
 
-const DeletePost = (props) => {
-      const [deleteData, setDeleteData] = useState([])
-      
-      fetch(`http://localhost:3001/products/${postData.id}`, {
-        method: "DELETE",
-        headers: new Headers({
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${props.token}`
-        })
-      })
-      .then(response => response.json())
-      .catch(err => {
-        console.error(err)
-      })
-      .then((json) => {
-        setDeleteData(json);
-      })
-      .catch(err => {
-        console.error(err)
-      })
-      console.log(deleteData)
-    }
-    // handleDelete = postId => {
-    //   const myProducts= this.deleteData.myProducts.filter(postId => post.Id !== postId)
-    //   this.setDeleteData({posts: posts})
-    // };
+
+// let postId = postData.map(post(Id));
+
+
+let handleDelete = (e) => {
+  e.preventDefault() 
+           fetch(`http://localhost:3001/${postId}`, {
+             method: "Delete",
+             headers: new Headers({
+               "Content-Type": "application/json",
+               "Authorization": `Bearer ${props.token}`
+             })
+           })
+           .then(response => response.json())
+           .then((data) => {
+             console.log(data);
+           })
+           .catch(err => {
+             console.error(err)
+           })
+          }
+
 
 const classes = useStyles();
 
@@ -105,14 +100,14 @@ const classes = useStyles();
           <ImageListItem key={post.imageUrl}>
             <img src={post.imageUrl} alt={post.title} />
             <ImageListItemBar
-              title={post.album}
+              title= {post.album}
               classes={{
                 root: classes.titleBar,
                 title: classes.delete,
               }}
               actionIcon={
                 <div>                
-                  <DeleteIcon />
+                  <DeleteIcon onClick= {handleDelete} /> 
                   <EditIcon />
                 </div>           
                 
@@ -124,8 +119,7 @@ const classes = useStyles();
       </ImageList>
     </div> 
     )
-
-}
+            }
 
 
 export default MyProducts

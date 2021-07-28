@@ -8,7 +8,6 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
@@ -39,19 +38,14 @@ function AllProduct() {
   useEffect(() => {
       const fetchItems = async () => {
           const result = await axios(`http://localhost:3001/products`)
-          console.log(result.data)
+          // console.log(result.data)
           setItemData(result.data)
       }
       fetchItems()
   }, [])
     
     console.log(itemData)
-    // function BasicButtonGroup() {
-    //   const button{
 
-    //   onclick(e.target.value);
-    //   }
-    // }
 
 
   return (
@@ -63,9 +57,9 @@ function AllProduct() {
         {itemData.map((item) => (
         <ImageListItem key={item.imageUrl}>
           <img src={item.imageUrl} alt={item.album} />
-          <ImageListItemBar
+          <ImageListItemBar 
             album={item.album}
-            subtitle={<span>By: {item.artist} ; Condition: {item.condition}<br/><br/> Price: ${item.price} ; Description: {item.description} </span>}
+            subtitle={<span> {item.album} By: {item.artist} ; Condition: {item.condition}<br/><br/> Price: ${item.price} ; Description: {item.description} </span>}
             actionIcon={
               <ButtonGroup varient="contained">
                 <FavoriteIcon />
