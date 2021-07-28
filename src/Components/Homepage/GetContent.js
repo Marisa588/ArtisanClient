@@ -9,9 +9,14 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
+
+import Modal from '@material-ui/core/Modal';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
+
  
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'space-around',
       overflow: 'hidden',
       backgroundColor: theme.palette.background.paper,
+      // backgroundColor: '#E5D2B4'
+
     },
     imageList: {
       flexWrap: 'no-wrap'
@@ -28,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
     },
+    align: {
+      textAlign: 'center',
+      color: '#8C6373'
+    }
   }));
  
   
@@ -58,7 +69,7 @@ function AllProduct() {
     <div className={classes.root}>
     <ImageList rowHeight={400} className={classes.imageList}>
       <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
-        <ListSubheader component="div">For Sale</ListSubheader>
+        <ListItemText className={classes.align} component="div">For Sale</ListItemText>
       </ImageListItem>
         {itemData.map((item) => (
         <ImageListItem key={item.imageUrl}>

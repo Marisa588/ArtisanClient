@@ -8,6 +8,9 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import updatedProduct from './Edit';
 import EditIcon from '@material-ui/icons/Edit';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ListItemText from '@material-ui/core/ListItemText';
+
 
 
 
@@ -19,7 +22,9 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: 'theme.palette.background.paper,',
+    backgroundColor: '#E5D2B4' //just trying this out, can change if we don't like it
+
   },
   imageList: {
     flexWrap: 'nowrap',
@@ -32,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+  align: {
+    textAlign: 'center',
+    color: '#8C6373',
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
@@ -100,7 +108,8 @@ const classes = useStyles();
 
     return (
       <div className={classes.root}>
-      <ImageList className={classes.imageList} cols={2.5}>
+         <ListItemText className={classes.align} component="div">My Listings</ListItemText>
+      <ImageList className={classes.imageList} cols={2}>
         {postData.map((post) => (
           <ImageListItem key={post.imageUrl}>
             <img src={post.imageUrl} alt={post.title} />
