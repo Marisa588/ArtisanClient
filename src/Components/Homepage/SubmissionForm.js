@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import { FormGroup, FormControl, FormLabel, Input, Button, TextField } from '@material-ui/core'
 
 const SubmissionForm = (props) => {
@@ -7,11 +8,29 @@ const SubmissionForm = (props) => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [condition, setCondition] =useState('')
-    // const [imageUrl, setImageUrl] =useState('')
+    const [imageUrl, setImageUrl] =useState('')
+
+    const [fileData, setFileData] = useState("");
+
+    const getFile = (e) => {
+        setFileData(e.target.files[0])
+    };
+
+    // const uploadFile = (e) => {
+    //     e.preventDefault();
+    //     const data = new FormData();
+    //     data.append("file", fileData);
+    //     axios({
+    //         method: "POST",
+    //         url: "http://localhost:3001/albumcover",
+    //         data: data,
+    //     }).then((res) => {
+    //         alert(res.data.message)
+    //     })
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // Multer stuff goes here
 
         fetch('http://localhost:3001/products/', {
             method: 'POST',
@@ -29,12 +48,30 @@ const SubmissionForm = (props) => {
                 setPrice('')
                 setCondition('')
                 // setImageUrl('')
-                props.getProducts()
+                // props.getProducts()
             })
     }
 
     return (
         <div>
+            {/* <form onSubmit={uploadFile}>
+                <input type="file" name="file" onChange={getFile} required />
+                <input type="submit" name="image" />
+            </form> */}
+
+            <form onSubmit={handleSubmit}>
+                <FormGroup>
+                    {/* <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>
+                    <Input name="image" type="file" value={imageUrl} onChange={(e) => setCondition(e.target.value)} /> */}
+
+
+                    <FormLabel htmlFor="imageUrl">Product Image</FormLabel>
+                    <Input name="image" type="file" />
+                </FormGroup>
+
+                <Button type='submit'>Submit</Button>
+            </form>
+            <img src=""></img>
             <form onSubmit={handleSubmit}>
                 <FormGroup>
                     {/* <FormLabel htmlFor="imageUrl">ImageUrl</FormLabel>

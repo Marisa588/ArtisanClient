@@ -51,7 +51,7 @@ function rand() {
   
     const body = (
       <div style={modalStyle} className={classes.paper}>
-        <h2>Text in a modal</h2>
+        <h2>Submit a rad record</h2>
           <SubmissionForm token={props.token}/>
       </div>
     );
