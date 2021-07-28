@@ -6,7 +6,9 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import updatedProduct from './Edit';
 import EditIcon from '@material-ui/icons/Edit';
+
 
 
 
@@ -21,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
   imageList: {
     flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: 'translateZ(0)',
   },
   title: {
@@ -31,7 +32,16 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)',
+  },
+  override: {
+    IconButton: "space around"
+  }
 }));
+
+
+
 
 
 
@@ -57,6 +67,33 @@ function MyProducts (props) {
     }, []);
 console.log(postData)
 
+const DeletePost = (props) => {
+      const [deleteData, setDeleteData] = useState([])
+      
+      fetch(`http://localhost:3001/products/${postData.id}`, {
+        method: "DELETE",
+        headers: new Headers({
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${props.token}`
+        })
+      })
+      .then(response => response.json())
+      .catch(err => {
+        console.error(err)
+      })
+      .then((json) => {
+        setDeleteData(json);
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      console.log(deleteData)
+    }
+    // handleDelete = postId => {
+    //   const myProducts= this.deleteData.myProducts.filter(postId => post.Id !== postId)
+    //   this.setDeleteData({posts: posts})
+    // };
+
 const classes = useStyles();
 
 
@@ -68,21 +105,27 @@ const classes = useStyles();
           <ImageListItem key={post.imageUrl}>
             <img src={post.imageUrl} alt={post.title} />
             <ImageListItemBar
-              title={post.title}
+              title={post.album}
               classes={{
                 root: classes.titleBar,
-                title: classes.title,
+                title: classes.delete,
               }}
               actionIcon={
-                <EditIcon />
+                <div>                
+                  <DeleteIcon />
+                  <EditIcon />
+                </div>           
                 
               }
+
             />
           </ImageListItem>
         ))}
       </ImageList>
     </div> 
     )
-    }
+
+}
+
 
 export default MyProducts

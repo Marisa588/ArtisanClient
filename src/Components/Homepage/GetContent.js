@@ -7,42 +7,34 @@ import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
-import Modal from '@material-ui/core/Modal';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
+import AddShoppingCart from '@material-ui/icons/AddShoppingCart';
  
 
 const useStyles = makeStyles((theme) => ({
     root: {
       display: 'flex',
-      width: 1080,
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       overflow: 'hidden',
       backgroundColor: theme.palette.background.paper,
     },
     imageList: {
-      width: 1200,
-      height: 3000,
+      flexWrap: 'no-wrap'
     },
     icon: {
       color: 'rgba(255, 255, 255, 0.54)',
     },
   }));
+ 
   
 function AllProduct() {
     const classes = useStyles();
     const [itemData, setItemData] = useState([])
-    const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+    
 
   useEffect(() => {
       const fetchItems = async () => {
@@ -54,6 +46,12 @@ function AllProduct() {
   }, [])
     
     console.log(itemData)
+    // function BasicButtonGroup() {
+    //   const button{
+
+    //   onclick(e.target.value);
+    //   }
+    // }
 
 
   return (
@@ -67,22 +65,12 @@ function AllProduct() {
           <img src={item.imageUrl} alt={item.album} />
           <ImageListItemBar
             album={item.album}
-            subtitle={<span>By: {item.artist} <br/><br/> Price: ${item.price} </span>}
+            subtitle={<span>By: {item.artist} ; Condition: {item.condition}<br/><br/> Price: ${item.price} ; Description: {item.description} </span>}
             actionIcon={
-              <IconButton aria-label={`info about ${item.album}`} className={classes.icon}>
-                <InfoIcon>
-                <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                  >
-                    {item.description}
-                  </Modal>
-                </InfoIcon>
+              <ButtonGroup varient="contained">
                 <FavoriteIcon />
-                <ShareIcon />
-              </IconButton>
+                <AddShoppingCart />
+              </ButtonGroup>
             }
             />
         </ImageListItem>
