@@ -39,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
   },
   align: {
     textAlign: 'center',
-    color: '#8C6373',
+    color: '#8C6373'
+  },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
   },
