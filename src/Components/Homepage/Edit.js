@@ -1,38 +1,51 @@
 import React, {useState} from 'react';
 import {Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody} from 'reactstrap'
 import EditIcon from '@material-ui/icons/Edit';
+import MyProducts from './UserProducts'
 
-const UpdatedProduct = (props) => {
-    const [editDescription, setEditDescription] = useState(props.postToUpdate.description);
-    const [editArtist, setEditArtist] = useState(props.postToUpdate.artist);
-    const [editAlbum, setEditAlbum] = useState(props.postToUpdate.album);
-    const [editPrice, setEditPrice] = useState(props.postToUpdate.price);
-    const [editCondition, setEditCondition] = useState(props.postToUpdate.condition);
-    const [editImageUrl, setEditImageUrl] = useState(props.postToUpdate.imageUrl);
+function postId () {
+    console.log(MyProducts)
+}
+  function UpdatedProduct (props) {
+    const [editAlbum, setEditAlbum] = useState();
+    const [editArtist, setEditArtist] = useState();
+    const [editDescription, setEditDescription] = useState();
+    const [editPrice, setEditPrice] = useState();
+    const [editCondition, setEditCondition] = useState();
+    
 
-    const postToUpdate = (event, post) => {
-        event.preventDefault(
-        fetch(`http://localhost:3000/log/${props.postToUpdate.id}`, {
-            method: 'POST',
-            body: JSON.stringify({log: {description: editDescription, artist: editArtist, album: editAlbum, price: editPrice, condition: editCondition, imageUrl: editImageUrl }}),
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch(`http://localhost:3001/products${postId}`, {
+            method: 'PUT',
+            body: JSON.stringify({ products: {description: editDescription, artist: editArtist, album: editAlbum, price: editPrice, condition: editCondition }}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${props.token}`
             })
-        }) .then((res) => {
-            props.fetchPost();
-            props.updateOff();
-        }))
+        }) .then((res) => res.json())
+            .then((updatePost) => {
+                console.log(updatePost);
+                setEditArtist('')
+                setEditAlbum('')
+                setEditDescription('')
+                setEditPrice('')
+                setEditCondition('')
+                
+            })
     }
-    function onChange(e) {
-        console.log(`event.target.value: ${JSON.stringify(e.target.value)}`);
-    }
+    
+    // function onChange(e) {
+    //     console.log(`event.target.value: ${JSON.stringify(e.target.value)}`);
+    // }
 
     return(
-        <Modal isOpen={true}>
+        <Modal>
             <ModalHeader>Update Post</ModalHeader>
             <ModalBody>
-                <Form onSubmit={postToUpdate}>
+                <Form onSubmit={handleSubmit}>
                     <FormGroup>
                         <Label>Edit Album:</Label>
                         <Input type="text" value={editAlbum} onChange={(e) => setEditAlbum(e.target.value)}/>
@@ -55,17 +68,13 @@ const UpdatedProduct = (props) => {
                         <Input type="text" name="condition" value={editCondition} onChange={(e) => setEditCondition(e.target.value)}> 
                         </Input>
                     </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor="imageUrl">Update Image:</Label>
-                        <Input type="text" name="imageUrl" value={editImageUrl} onChange={(e) => setEditImageUrl(e.target.value)}>
-                        </Input>
-                    </FormGroup>
-                    <Button type="submit">Update Post!</Button>
+                    <Button type="submit">Updated Post!</Button>
                 </Form>
             </ModalBody>
         </Modal>
     )
 }
+
 
 export default UpdatedProduct;
     

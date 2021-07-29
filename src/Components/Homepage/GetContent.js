@@ -6,7 +6,6 @@ import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
@@ -22,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
     },
     imageList: {
-      flexWrap: 'no-wrap'
+      flexWrap: 'no-wrap',
     },
-    icon: {
-      color: 'rgba(255, 255, 255, 0.54)',
+    icon:{
+      color: 'rgba(255, 255, 255, 0.54)'
     },
   }));
  
@@ -50,16 +49,16 @@ function AllProduct() {
 
   return (
     <div className={classes.root}>
-    <ImageList rowHeight={400} className={classes.imageList}>
-      <ImageListItem key="Subheader" cols={2} style={{ height: 'auto' }}>
+    <ImageList rowHeight={600} className={classes.imageList} cols={3}>
+      <ImageListItem key="Subheader" cols={3} style={{ height: 'auto'}}>
         <ListSubheader component="div">For Sale</ListSubheader>
       </ImageListItem>
         {itemData.map((item) => (
         <ImageListItem key={item.imageUrl}>
           <img src={item.imageUrl} alt={item.album} />
           <ImageListItemBar 
-            album={item.album}
-            subtitle={<span> {item.album} By: {item.artist} ; Condition: {item.condition}<br/><br/> Price: ${item.price} ; Description: {item.description} </span>}
+            title={item.album} 
+            subtitle={<span>{item.artist} -  Condition: {item.condition}<br></br> Price: ${item.price}   Description: {item.description} </span>}
             actionIcon={
               <ButtonGroup varient="contained">
                 <FavoriteIcon />

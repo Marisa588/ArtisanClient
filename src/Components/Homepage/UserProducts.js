@@ -4,10 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import updatedProduct from './Edit';
+import UpdatedProduct from './Edit';
 import EditIcon from '@material-ui/icons/Edit';
+
 
 
 
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+    paddingTop: '50',
   },
   imageList: {
     flexWrap: 'nowrap',
@@ -34,9 +35,7 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
-  icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
-  },
+
   
 }));
 
@@ -95,7 +94,7 @@ const classes = useStyles();
 
     return (
       <div className={classes.root}>
-      <ImageList className={classes.imageList} cols={2.5}>
+      <ImageList className={classes.imageList} cols={4} rowHeight={300}>
         {postData.map((post) => (
           <ImageListItem key={post.imageUrl}>
             <img src={post.imageUrl} alt={post.title} />
@@ -108,7 +107,7 @@ const classes = useStyles();
               actionIcon={
                 <div>                
                   <DeleteIcon onClick= {handleDelete} /> 
-                  <EditIcon />
+                  <EditIcon onClick= {UpdatedProduct} />
                 </div>           
                 
               }
