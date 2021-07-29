@@ -31,13 +31,16 @@ function rand() {
     btn: {
       background: 'transparent',
       color: 'transparent',
-      marginLeft: '50px'
+      border: 'none'
+    },
+    img: {
+      maxWidth: '100px',
+      maxHeight: '100px'
     }
   }));
   
   export default function SimpleModal(props) {
     const classes = useStyles();
-    // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
   
@@ -59,7 +62,7 @@ function rand() {
     return (
       <div>
         <button className={classes.btn} type="button" onClick={handleOpen}>
-          <img src={userIcon}></img>
+          <img className={classes.img} src={userIcon}></img>
         </button>
         <Modal
           open={open}
